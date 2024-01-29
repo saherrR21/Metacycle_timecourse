@@ -1,0 +1,14 @@
+
+library(MetaCycle)
+
+# Read the data
+data <- read.csv("Sub743_detrended_10_9_transposed_100_800_56samples (1).csv", row.names = 1)
+
+
+timepoints <- seq(100, by = 12.5, length.out = 56)
+
+result <- meta2d(infile="Sub743_detrended_10_9_transposed_100_800_56samples (1).csv", filestyle="csv", outdir="metaout", 
+                 timepoints=timepoints, minper=12.5, maxper=600, 
+                 cycMethod=c("JTK", "ARS", "LS"), outIntegration="noIntegration")
+
+
