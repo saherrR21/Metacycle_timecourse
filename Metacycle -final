@@ -1,0 +1,18 @@
+
+library(MetaCycle)
+
+# Read the data
+data <- read.csv("Sub743_detrended_10_9_transposed_100_800_56samples (1).csv", row.names = 1)
+
+
+# second column where the time points begin from 100th, sampling is every 12.5 minutes and final "time point column number " is 57. (total columns 58 where first column is GENE)
+timepoints <- seq(100, by = 12.5, length.out = 57)
+
+
+## MINPER and MAXPER is set to 300 to 420 which is 5 to 7 hours respectively.
+##This is to test for HES7 periodicity initially
+
+result <- meta2d(infile="Sub743_detrended_10_9_transposed_100_800_56samples (1).csv", 
+                 filestyle="csv", outdir="metaoutFINAL", 
+                 timepoints=timepoints, minper=300, maxper=420, 
+                 cycMethod=c("LS"), outIntegration="noIntegration")
